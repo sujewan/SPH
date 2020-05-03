@@ -11,12 +11,23 @@ This application developed using Kotlin and consumes Api from Data.gov.sg to ret
 - Emulator test: Completed
 
 ## Screenshots
+Home Screen                |  Yearly Breakdown                     
+:-------------------------:|:-------------------------:
+![](screenshots/home_screen.png)  |  ![](screenshots/popup_dialog.png)
 
 ## Architecture:
+![](screenshots/mvvm_architecture.png)
 
 ## Technologies:
-- MVVM
-- Data Binding
-- Live Data
-- Room
-- View Model
+- Android Architecure: [MVVM](https://developer.android.com/jetpack/docs/guide#overview)
+- Binding UI Component: [DataBinding](https://developer.android.com/topic/libraries/data-binding/)
+- Observe Data Holder: [Live Data](https://developer.android.com/topic/libraries/architecture/livedata)
+- Network: [Retrofit](https://square.github.io/retrofit/) with RxJava/RxAndroid
+- Offline Caching: [Room](https://developer.android.com/topic/libraries/architecture/room)
+- Dependancy Injection: [Dagger2](https://dagger.dev/)
+- Store UI Releated Data: [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+- Animation: [Lottie](https://airbnb.design/lottie/)
+- Followed [Material Design](https://material.io/design) Pattern
+- Used AndroidX with [Android JetPack](https://developer.android.com/jetpack) Components
+- Unit Test: [JUnit](https://junit.org/junit4/), [Mockito](https://site.mockito.org/) and [Robolectric](http://robolectric.org/)
+- UI Test: [Espresso](https://developer.android.com/training/testing/espresso)
