@@ -9,5 +9,3 @@ This application developed using Kotlin and consumes Api from Data.gov.sg to ret
 
 - Non-emulator Test: Completed
 - Emulator test: Completed
-
-Project Status: Completed
