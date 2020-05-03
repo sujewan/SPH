@@ -9,3 +9,14 @@ This application developed using Kotlin and consumes Api from Data.gov.sg to ret
 
 - Non-emulator Test: Completed
 - Emulator test: Completed
+
+## Screenshots
+
+## Architecture:
+
+## Technologies:
+- MVVM
+- Data Binding
+- Live Data
+- Room
+- View Model
