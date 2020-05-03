@@ -5,7 +5,7 @@ This application developed using Kotlin and consumes Api from Data.gov.sg to ret
 ## Completed Tasks:
  - Task ONE: Display a list of data
  - Task TWO: Display a clickable image
- - Task THREE: Data Caching
+ - Task THREE: Data Caching (Using Room)
 
 - Non-emulator Test: Completed
 - Emulator test: Completed
