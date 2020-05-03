@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">SPH</string>
+    <string name="app_name">Data Usage</string>
+    <string name="mobile_data_usage">Mobile Data Usage</string>
+    <string name="data_usage">Usage</string>
+    <string name="year">Year</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="please_wait">Please Wait…</string>
+    <string name="ok">OK</string>
+    <string name="unable_to_connect_server">Unable to connect server. Please try again later</string>
+    <string name="yearly_usage_breakdown">Usage Breakdown -&#160;</string>
 </resources>

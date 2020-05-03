@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_records_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F2F2F2"
+        tools:context=".view.ui.home.HomeFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/task_app_bar_bg"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
+            android:id="@+id/relativeLayout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/toolBar_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="@dimen/action_bar_height"
+                android:text="@string/mobile_data_usage"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:gravity="center"
+                app:fontFamily="@font/nunito_regular"
+                android:layout_width="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                app:layout_constraintTop_toBottomOf="@+id/toolBar_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:tint="#F2F2F2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintDimensionRatio="10.4"
+                app:srcCompat="@drawable/ic_curve_tool_bar"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_records"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:layout_marginTop="72dp"
+            android:layout_marginStart="@dimen/common_small_margin"
+            android:layout_marginEnd="@dimen/common_small_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/row_data_usage" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/row_loading_anim"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.22"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/lottie_loading" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
