@@ -67,7 +67,7 @@ class YearlyRecordDaoTest {
         database.close()
     }
 
-    @Test fun getCharactersOrderedByPage() {
+    @Test fun getAllRecords() {
         val recordList = getValue(yearlyRecordDao.getAllRecords())
         assertThat(recordList.size, equalTo(3))
 

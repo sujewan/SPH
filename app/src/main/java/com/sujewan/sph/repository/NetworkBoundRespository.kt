@@ -51,7 +51,6 @@ constructor() {
                     }
 
                     false -> {
-                        onFetchFailed()
                         result.addSource(dbSource) {
                             result.setValue(Resource.error(response.error))
                         }
@@ -82,9 +81,4 @@ constructor() {
     // Called to create the API call.
     @MainThread
     protected abstract fun fetchService(): LiveData<ApiResponse<RequestType>>
-
-    // Called when the fetch fails. The child class may want to reset components
-    // like rate limiter.
-    @MainThread
-    protected abstract fun onFetchFailed()
 }

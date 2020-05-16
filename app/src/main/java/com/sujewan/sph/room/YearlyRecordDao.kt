@@ -11,7 +11,7 @@ import com.sujewan.sph.utils.Constants
 @Dao
 interface YearlyRecordDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllRecords(characters: ArrayList<YearlyRecord>)
+    fun insertAllRecords(records: ArrayList<YearlyRecord>)
 
     @Query("SELECT * FROM ${Constants.TABLE_YEARLY_RECORD}")
     fun getAllRecords(): LiveData<List<YearlyRecord>>

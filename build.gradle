@@ -1,4 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "$project.rootDir/sonar.gradle"
 
 buildscript {
     ext {
@@ -8,11 +9,12 @@ buildscript {
     repositories {
         google()
         jcenter()
-
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'org.jacoco:org.jacoco.core:0.8.5'
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8"
     }
 }
 
@@ -20,10 +22,19 @@ allprojects {
     repositories {
         google()
         jcenter()
+    }
+}
 
+subprojects {
+    apply plugin: "org.sonarqube"
+    sonarqube {
+        properties {
+            property "sonar.coverage.jacoco.xmlReportPaths", "$projectDir.parentFile.path/app/build/reports/jacoco/testDebugUnitTestCoverage/testDebugUnitTestCoverage.xml"
+        }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+

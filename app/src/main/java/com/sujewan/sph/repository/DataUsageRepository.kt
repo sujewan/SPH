@@ -38,10 +38,6 @@ constructor(val yearlyRecordDao: YearlyRecordDao, private val dataUsageApi: Data
             override fun fetchService(): LiveData<ApiResponse<DataUsageResponse>> {
                 return dataUsageApi.getMobileDataUsage(resourceId)
             }
-
-            override fun onFetchFailed() {
-
-            }
         }.asLiveData
 
     }

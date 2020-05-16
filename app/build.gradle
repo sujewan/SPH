@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply from: "$project.rootDir/jacoco.gradle"
 
 android {
     compileSdkVersion 29
@@ -12,7 +13,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -35,6 +36,7 @@ android {
     }
 
     testOptions {
+        animationsDisabled true
         unitTests.returnDefaultValues = true
         unitTests.includeAndroidResources = true
     }
@@ -112,8 +114,7 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
 
     // ROBOLECTRIC
-    def roboelectric_version = '4.0'
-    testImplementation "org.robolectric:robolectric:$roboelectric_version"
+    testImplementation "org.robolectric:robolectric:4.0"
 
     // THIRD PARTY LIBRARIES
     implementation 'com.google.android.material:material:1.1.0'
