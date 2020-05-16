@@ -9,12 +9,13 @@ import com.sujewan.sph.model.Quarter
 import com.sujewan.sph.model.Record
 import com.sujewan.sph.model.YearlyRecord
 import com.sujewan.sph.room.YearlyRecordDao
-import javax.inject.Inject
-import javax.inject.Singleton
+import org.koin.dsl.module
 
-@Singleton
-class DataUsageRepository @Inject
-constructor(val yearlyRecordDao: YearlyRecordDao, private val dataUsageApi: DataUsageApi) {
+val repoModule = module {
+    factory { DataUsageRepository(get(), get()) }
+}
+
+class DataUsageRepository(val yearlyRecordDao: YearlyRecordDao, private val dataUsageApi: DataUsageApi) {
 
     fun getMobileDataUsage(resourceId: String): LiveData<Resource<List<YearlyRecord>>> {
 

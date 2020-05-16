@@ -4,32 +4,24 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.sujewan.sph.R
 import com.sujewan.sph.api.Resource
 import com.sujewan.sph.api.Status
 import com.sujewan.sph.databinding.ActivityHomeBinding
-import com.sujewan.sph.factory.AppViewModelFactory
 import com.sujewan.sph.model.YearlyRecord
 import com.sujewan.sph.utils.CommonUtil
 import com.sujewan.sph.view.adapter.DataUsageAdapter
 import com.sujewan.sph.view.ui.general.BaseAppCompatActivity
 import com.sujewan.sph.view.viewholder.DataUsageViewHolder
-import dagger.android.AndroidInjection
-import javax.inject.Inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : BaseAppCompatActivity(), DataUsageViewHolder.Delegate {
+    private val viewModel: HomeActivityViewModel by viewModel()
+
     private val binding by lazy {
         DataBindingUtil.setContentView<ActivityHomeBinding>(this, R.layout.activity_home) }
 
-    @Inject
-    lateinit var viewModelFactory: AppViewModelFactory
-
-    private val viewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(HomeActivityViewModel::class.java) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         if (savedInstanceState == null) {

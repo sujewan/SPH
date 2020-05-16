@@ -8,10 +8,8 @@ import com.sujewan.sph.model.YearlyRecord
 import com.sujewan.sph.repository.DataUsageRepository
 import com.sujewan.sph.utils.Constants
 import com.sujewan.sph.view.adapter.DataUsageAdapter
-import javax.inject.Inject
 
-class HomeActivityViewModel @Inject
-constructor(private val repository: DataUsageRepository) : ViewModel() {
+class HomeActivityViewModel(private val repository: DataUsageRepository) : ViewModel() {
     lateinit var adapter : DataUsageAdapter
 
     var recordsLiveData: LiveData<Resource<List<YearlyRecord>>> = MutableLiveData()

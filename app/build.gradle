@@ -75,20 +75,6 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:2.1.0"
     testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServer_version"
 
-    //DAGGER2
-    def dagger_version = '2.16'
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    androidTestImplementation "com.google.dagger:dagger:$dagger_version"
-    implementation "com.google.dagger:dagger-android:$dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
-
-    // DAGGER 2 TEST
-    compileOnly 'javax.annotation:jsr250-api:1.0'
-    kaptTest "com.google.dagger:dagger:$dagger_version"
-    testImplementation "com.google.dagger:dagger:$dagger_version"
-
     //RETROFIT
     def retrofit_version = '2.6.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -120,4 +106,10 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.afollestad.material-dialogs:core:3.1.1'
     implementation 'com.airbnb.android:lottie:3.1.0'
+
+    // Current stable version
+    def koin_version= "2.1.5"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
 }

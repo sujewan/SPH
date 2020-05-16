@@ -4,24 +4,20 @@ import android.app.Application
 import androidx.room.Room
 import com.sujewan.sph.room.AppDatabase
 import com.sujewan.sph.room.YearlyRecordDao
-import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
+import org.koin.dsl.module
 
-@Module
-class AppModule {
-    @Provides
-    @Singleton
-    fun provideDatabase(application: Application): AppDatabase {
-        return Room.databaseBuilder(application.applicationContext, AppDatabase::class.java, "SPHMobileDataUsage.db")
-            .allowMainThreadQueries()
-            .fallbackToDestructiveMigration()
-            .build()
-    }
+val appDatabaseModule = module {
+    single { provideDatabase(get()) }
+    single { provideYearlyRecordDao(get()) }
+}
 
-    @Provides
-    @Singleton
-    fun provideYearlyRecordDao(database: AppDatabase): YearlyRecordDao {
-        return database.yearlyRecordDao()
-    }
+fun provideDatabase(application: Application): AppDatabase {
+    return Room.databaseBuilder(application.applicationContext, AppDatabase::class.java, "SPHMobileDataUsage.db")
+        .allowMainThreadQueries()
+        .fallbackToDestructiveMigration()
+        .build()
+}
+
+fun provideYearlyRecordDao(database: AppDatabase): YearlyRecordDao {
+    return database.yearlyRecordDao()
 }

@@ -1,19 +1,16 @@
 package com.sujewan.sph
 
-import android.app.Activity
 import android.app.Application
 import android.content.Context
-import androidx.annotation.VisibleForTesting
-import com.sujewan.sph.di.DaggerAppComponent
-import com.sujewan.sph.utils.Constants
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import javax.inject.Inject
+import com.sujewan.sph.di.appDatabaseModule
+import com.sujewan.sph.di.networkModule
+import com.sujewan.sph.di.viewModelModule
+import com.sujewan.sph.repository.repoModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
-open class MyApplication : Application(), HasActivityInjector {
-    @Inject
-    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
+open class MyApplication : Application() {
 
     init {
         instance = this
@@ -28,17 +25,10 @@ open class MyApplication : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-        setupDagger()
+        startKoin {
+            androidLogger()
+            androidContext(this@MyApplication)
+            modules(listOf(networkModule, appDatabaseModule, viewModelModule, repoModule))
+        }
     }
-
-    @VisibleForTesting
-    open fun setupDagger() {
-        DaggerAppComponent.builder()
-            .application(this)
-            .baseUrl(Constants.BASE_URL)
-            .build()
-            .inject(this)
-    }
-
-    override fun activityInjector(): AndroidInjector<Activity> = activityInjector
 }
