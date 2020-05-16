@@ -32,7 +32,7 @@ Home Screen                |  Yearly Breakdown
 - Observe Data Holder: [Live Data](https://developer.android.com/topic/libraries/architecture/livedata)
 - Network: [Retrofit](https://square.github.io/retrofit/) with RxJava/RxAndroid
 - Offline Caching: [Room](https://developer.android.com/topic/libraries/architecture/room)
-- Dependancy Injection: [Dagger2](https://dagger.dev/)
+- Dependancy Injection: [Koin](https://insert-koin.io/)
 - Store UI Releated Data: [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 - Animation: [Lottie](https://airbnb.design/lottie/)
 - Followed [Material Design](https://material.io/design) Pattern
