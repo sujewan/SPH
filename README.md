@@ -9,17 +9,22 @@ This application developed using Kotlin and consumes Api from Data.gov.sg to ret
 
 - Non-emulator Test: Completed
 - Emulator test: Completed
+- Code Coverage : 76.7%
+
 
 ## Screenshots
 Home Screen                |  Yearly Breakdown                     
 :-------------------------:|:-------------------------:
 ![](screenshots/home_screen.png)  |  ![](screenshots/popup_dialog.png)
 
-## Code Coverage:
-![](screenshots/code_coverage.png)
+
+## Code Coverage (76.7%):
+![](screenshots/code_coverage_17052010.png)
+
 
 ## Architecture:
 ![](screenshots/mvvm_architecture.png)
+
 
 ## Technologies:
 - Android Architecure: [MVVM](https://developer.android.com/jetpack/docs/guide#overview)
