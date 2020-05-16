@@ -15,6 +15,9 @@ Home Screen                |  Yearly Breakdown
 :-------------------------:|:-------------------------:
 ![](screenshots/home_screen.png)  |  ![](screenshots/popup_dialog.png)
 
+## Code Coverage:
+![](screenshots/code_coverage.png)
+
 ## Architecture:
 ![](screenshots/mvvm_architecture.png)
 
