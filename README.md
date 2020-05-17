@@ -19,7 +19,7 @@ Home Screen                |  Yearly Breakdown
 
 
 ## Code Coverage (76.7%):
-![](screenshots/code_coverage_17052010.png)
+![](screenshots/code_coverage_17052020.png)
 
 
 ## Architecture:
