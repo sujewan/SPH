@@ -17,7 +17,7 @@ val repoModule = module {
 
 class DataUsageRepository(val yearlyRecordDao: YearlyRecordDao, private val dataUsageApi: DataUsageApi) {
 
-    fun getMobileDataUsage(resourceId: String): LiveData<Resource<List<YearlyRecord>>> {
+     fun getMobileDataUsage(resourceId: String): LiveData<Resource<List<YearlyRecord>>> {
 
         return object : NetworkBoundResource<List<YearlyRecord>, DataUsageResponse>() {
 
@@ -43,7 +43,7 @@ class DataUsageRepository(val yearlyRecordDao: YearlyRecordDao, private val data
 
     }
 
-    private fun manipulateDataUsageInfo(recordList: ArrayList<Record>): ArrayList<YearlyRecord> {
+    fun manipulateDataUsageInfo(recordList: ArrayList<Record>): ArrayList<YearlyRecord> {
         var quarterList: ArrayList<Quarter?> = arrayListOf()
         val yearlyRecordListWrapper: ArrayList<YearlyRecord> = arrayListOf()
 

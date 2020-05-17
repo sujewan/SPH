@@ -36,6 +36,7 @@ class HomeActivityTest {
 
     var recyclerView: RecyclerView? = null
     private var recyclerViewMatcher: RecyclerViewMatcher? = null
+    private val errorMessage = "Unable to connect server. Please try again later"
 
     companion object {
         private const val ITEM_FIRST_YEAR = "2008"

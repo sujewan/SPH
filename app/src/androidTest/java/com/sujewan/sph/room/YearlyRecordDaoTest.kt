@@ -7,13 +7,12 @@ import androidx.test.runner.AndroidJUnit4
 import com.sujewan.sph.model.Quarter
 import com.sujewan.sph.model.YearlyRecord
 import com.sujewan.sph.util.getValue
-import org.hamcrest.Matchers.equalTo
 import org.junit.After
-import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.test.assertEquals
 
 @RunWith(AndroidJUnit4::class)
 class YearlyRecordDaoTest {
@@ -32,8 +31,6 @@ class YearlyRecordDaoTest {
         val context = InstrumentationRegistry.getTargetContext()
         database = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
         yearlyRecordDao = database.yearlyRecordDao()
-
-        yearlyRecordDao.insertAllRecords(createMockData())
     }
 
     private fun createMockData(): ArrayList<YearlyRecord> {
@@ -67,14 +64,79 @@ class YearlyRecordDaoTest {
         database.close()
     }
 
-    @Test fun getAllRecords() {
-        val recordList = getValue(yearlyRecordDao.getAllRecords())
-        assertThat(recordList.size, equalTo(3))
+    @Test
+    fun testSaveAllRecords() {
+        // Check DB is empty
+        val initialRecords = getValue(yearlyRecordDao.getAllRecords())
+        assertEquals(0, initialRecords.size)
 
-        assertThat(recordList[0], equalTo(recordA))
-        assertThat(recordList[1], equalTo(recordB))
-        assertThat(recordList[2], equalTo(recordC))
+        // Save Mock Records to DB
+        val mockEntities = createMockData()
+        yearlyRecordDao.insertAllRecords(mockEntities)
+
+        // Get Records and Compare
+        val recordedEntities = getValue(yearlyRecordDao.getAllRecords())
+        assertEquals(mockEntities.size, recordedEntities.size)
+
+        // Check random data
+        assertEquals(recordedEntities[1], recordB)
     }
 
+    @Test
+    fun testGetAllRecords() {
+        // Check DB is empty
+        val initialRecords = getValue(yearlyRecordDao.getAllRecords())
+        assertEquals(0, initialRecords.size)
 
+        // Save Mock Records to DB
+        val mockEntities = createMockData()
+        yearlyRecordDao.insertAllRecords(mockEntities)
+
+        // Get Records and Compare
+        val recordedEntities = getValue(yearlyRecordDao.getAllRecords())
+        assertEquals(mockEntities.size, recordedEntities.size)
+
+        assertEquals(recordedEntities[0], recordA)
+        assertEquals(recordedEntities[1], recordB)
+        assertEquals(recordedEntities[2], recordC)
+    }
+
+    @Test
+    fun testGetRecordById() {
+        // Check DB is empty
+        val initialRecords = getValue(yearlyRecordDao.getAllRecords())
+        assertEquals(0, initialRecords.size)
+
+        // Save Mock Records to DB
+        val mockEntities = createMockData()
+        yearlyRecordDao.insertAllRecords(mockEntities)
+
+        // Get Store Records and Compare
+        val recordedEntities01 = getValue(yearlyRecordDao.getRecordByYear(recordA.year))
+        assertEquals(recordedEntities01, recordA)
+        assertEquals(recordedEntities01.year, recordA.year)
+        assertEquals(recordedEntities01.isDecreasedYear, recordA.isDecreasedYear)
+        assertEquals(recordedEntities01.totalVolume, recordA.totalVolume)
+        assertEquals(recordedEntities01.quarters, recordA.quarters)
+        assertEquals(recordedEntities01.quarters.size, recordA.quarters.size)
+        assertEquals(recordedEntities01.quarters[0]?.id, recordA.quarters[0]?.id)
+
+        val recordedEntities02 = getValue(yearlyRecordDao.getRecordByYear(recordB.year))
+        assertEquals(recordedEntities02, recordB)
+        assertEquals(recordedEntities02.year, recordB.year)
+        assertEquals(recordedEntities02.isDecreasedYear, recordB.isDecreasedYear)
+        assertEquals(recordedEntities02.totalVolume, recordB.totalVolume)
+        assertEquals(recordedEntities02.quarters, recordB.quarters)
+        assertEquals(recordedEntities02.quarters.size, recordB.quarters.size)
+        assertEquals(recordedEntities02.quarters[0]?.id, recordB.quarters[0]?.id)
+
+        val recordedEntities03 = getValue(yearlyRecordDao.getRecordByYear(recordC.year))
+        assertEquals(recordedEntities03, recordC)
+        assertEquals(recordedEntities03.year, recordC.year)
+        assertEquals(recordedEntities03.isDecreasedYear, recordC.isDecreasedYear)
+        assertEquals(recordedEntities03.totalVolume, recordC.totalVolume)
+        assertEquals(recordedEntities03.quarters, recordC.quarters)
+        assertEquals(recordedEntities03.quarters.size, recordC.quarters.size)
+        assertEquals(recordedEntities03.quarters[0]?.id, recordC.quarters[0]?.id)
+    }
 }

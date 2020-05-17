@@ -17,5 +17,5 @@ interface YearlyRecordDao {
     fun getAllRecords(): LiveData<List<YearlyRecord>>
 
     @Query("SELECT * FROM ${Constants.TABLE_YEARLY_RECORD} WHERE ${Constants.RECORD_YEAR}=:year")
-    fun getRecordById(year: Int): LiveData<YearlyRecord>
+    fun getRecordByYear(year: Int): LiveData<YearlyRecord>
 }
