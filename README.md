@@ -9,17 +9,22 @@ This application developed using Kotlin and consumes Api from Data.gov.sg to ret
 
 - Non-emulator Test: Completed
 - Emulator test: Completed
+- Code Coverage : 76.7%
+
 
 ## Screenshots
 Home Screen                |  Yearly Breakdown                     
 :-------------------------:|:-------------------------:
 ![](screenshots/home_screen.png)  |  ![](screenshots/popup_dialog.png)
 
-## Code Coverage:
-![](screenshots/code_coverage.png)
+
+## Code Coverage (76.7%):
+![](screenshots/code_coverage_17052010.png)
+
 
 ## Architecture:
 ![](screenshots/mvvm_architecture.png)
+
 
 ## Technologies:
 - Android Architecure: [MVVM](https://developer.android.com/jetpack/docs/guide#overview)
@@ -27,7 +32,7 @@ Home Screen                |  Yearly Breakdown
 - Observe Data Holder: [Live Data](https://developer.android.com/topic/libraries/architecture/livedata)
 - Network: [Retrofit](https://square.github.io/retrofit/) with RxJava/RxAndroid
 - Offline Caching: [Room](https://developer.android.com/topic/libraries/architecture/room)
-- Dependancy Injection: [Dagger2](https://dagger.dev/)
+- Dependancy Injection: [Koin](https://insert-koin.io/)
 - Store UI Releated Data: [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 - Animation: [Lottie](https://airbnb.design/lottie/)
 - Followed [Material Design](https://material.io/design) Pattern
